@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Bella</string>
+    <string name="empty_text_view">Stock empty, add entries to display</string>
 </resources>
