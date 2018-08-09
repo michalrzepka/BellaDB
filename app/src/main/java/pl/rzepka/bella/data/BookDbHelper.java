@@ -12,7 +12,6 @@ public class BookDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "store.db";
     private static final int DATABASE_VERSION = 1;
 
-
     public BookDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

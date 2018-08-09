@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
     android:orientation="horizontal"
     android:paddingBottom="4dp"
     android:paddingLeft="16dp"
     android:paddingRight="8dp"
-    android:paddingTop="4dp">
+    android:paddingTop="4dp"
+    android:descendantFocusability="blocksDescendants">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
@@ -28,11 +28,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:fontFamily="sans-serif-condensed"
+                android:fontFamily="sans-serif"
                 android:maxLines="1"
                 android:text="Product name"
                 android:textColor="@android:color/black"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,14 +67,14 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/edit_button"
+                android:id="@+id/sell_button"
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
                 android:text="Sell"
                 android:textAllCaps="true" />
 
             <Button
-                android:id="@+id/sell_button"
+                android:id="@+id/edit_button"
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
                 android:text="Edit"

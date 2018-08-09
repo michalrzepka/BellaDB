@@ -4,11 +4,13 @@ import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
+import pl.rzepka.bella.R;
 import pl.rzepka.bella.data.BookContract.BookEntry;
 
 
@@ -17,7 +19,7 @@ public class BookProvider extends ContentProvider {
     public static final int BOOKS = 100;
     public static final int BOOKS_ID = 101;
 
-    public static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+    private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
         sUriMatcher.addURI(BookContract.CONTENT_AUTHORITY, BookContract.PATH_BOOKS, BOOKS);
@@ -96,12 +98,13 @@ public class BookProvider extends ContentProvider {
         }
 
         String supplierName = values.getAsString(BookEntry.COLUMN_SUPPLIER_NAME);
-        if (supplierName == null || !BookContract.isValidSupplierName(supplierName)) {
+        if (supplierName == null) {
             throw new IllegalArgumentException("Please provide valid supplier name (max 60 characters)");
         }
 
         String supplierPhone = values.getAsString(BookEntry.COLUMN_SUPPLIER_PHONE);
-        if (supplierPhone != null && BookContract.isValidPhone(supplierPhone)) {
+        if (supplierPhone != null && !(BookContract.isValidPhone(supplierPhone))) {
+            Log.v("phone",supplierPhone);
             throw new IllegalArgumentException("Please provide valid supplier phone (numbers only)");
         }
 
@@ -134,35 +137,35 @@ public class BookProvider extends ContentProvider {
         if (values.containsKey(BookEntry.COLUMN_PRODUCT_NAME)) {
             String productName = values.getAsString(BookEntry.COLUMN_PRODUCT_NAME);
             if (productName == null) {
-                throw new IllegalArgumentException("Please provide valid product name");
+                throw new IllegalArgumentException(Resources.getSystem().getString(R.string.wrong_product_name));
             }
         }
 
         if (values.containsKey(BookEntry.COLUMN_PRICE)) {
             Double productPrice = values.getAsDouble(BookEntry.COLUMN_PRICE);
             if (productPrice != null && productPrice < 0) {
-                throw new IllegalArgumentException("Please provide valid product price");
+                throw new IllegalArgumentException(Resources.getSystem().getString(R.string.wrong_price));
             }
         }
 
         if (values.containsKey(BookEntry.COLUMN_QUANTITY)) {
             Integer productQuantity = values.getAsInteger(BookEntry.COLUMN_QUANTITY);
             if (productQuantity != null && productQuantity < 0) {
-                throw new IllegalArgumentException("Please provide valid product quantity");
+                throw new IllegalArgumentException(Resources.getSystem().getString(R.string.wrong_quantity));
             }
         }
 
         if (values.containsKey(BookEntry.COLUMN_SUPPLIER_NAME)) {
             String supplierName = values.getAsString(BookEntry.COLUMN_SUPPLIER_NAME);
-            if (supplierName == null || !BookContract.isValidSupplierName(supplierName)) {
-                throw new IllegalArgumentException("Please provide valid supplier name");
+            if (supplierName == null) {
+                throw new IllegalArgumentException(Resources.getSystem().getString(R.string.wrong_supplier_name));
             }
         }
 
         if (values.containsKey(BookEntry.COLUMN_SUPPLIER_PHONE)) {
             String supplierPhone = values.getAsString(BookEntry.COLUMN_SUPPLIER_PHONE);
-            if (supplierPhone != null && BookContract.isValidPhone(supplierPhone)) {
-                throw new IllegalArgumentException("Supplier Phone requires valid");
+            if (supplierPhone == null || !(BookContract.isValidPhone(supplierPhone))) {
+                throw new IllegalArgumentException(Resources.getSystem().getString(R.string.wrong_supplier_phone));
             }
         }
 

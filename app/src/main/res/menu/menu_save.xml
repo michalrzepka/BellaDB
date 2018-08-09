@@ -5,7 +5,7 @@
         tools:context=".EditorActivity">
 
         <item
-            android:id="@+id/action_save"
+            android:id="@+id/save"
             android:title="Save"
             android:icon="@drawable/baseline_check_circle_outline_white_48"
             app:showAsAction="always" />

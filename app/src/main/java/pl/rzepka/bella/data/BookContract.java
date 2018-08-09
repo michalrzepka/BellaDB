@@ -23,6 +23,7 @@ public class BookContract {
         public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_BOOKS;
 
         public static final String TABLE_NAME = "books";
+
         public static final String _ID = BaseColumns._ID;
         public static final String COLUMN_PRODUCT_NAME = "name";
         public static final String COLUMN_PRICE = "price";
@@ -32,15 +33,8 @@ public class BookContract {
 
     }
 
-    public static boolean isValidSupplierName(String supplierName) {
-        if (supplierName.length() <= 60) {
-            return true;
-        }
-        return false;
-    }
-
     public static boolean isValidPhone(String supplierPhone) {
-        if (supplierPhone.length() >= 7 && supplierPhone.matches("[0-9]+")) {
+        if (supplierPhone.length() >= 7) {
             return true;
         }
         return false;

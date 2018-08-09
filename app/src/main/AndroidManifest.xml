@@ -21,7 +21,6 @@
 
         <activity
             android:name=".EditorActivity"
-            android:label="Edit product"
             android:parentActivityName=".CatalogActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -39,7 +38,7 @@
 
         <provider
             android:name=".data.BookProvider"
-            android:authorities="com.example.android.books"
+            android:authorities="pl.rzepka.bella"
             android:exported="false" />
 
     </application>

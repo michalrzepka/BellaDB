@@ -8,9 +8,11 @@
 
     <ListView
         android:layout_alignParentBottom="true"
+        android:clickable="true"
+
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="422dp" />
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/empty_text_view"
@@ -19,7 +21,8 @@
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
         android:text="@string/empty_text_view"
-        android:textSize="18dp"
+        android:textAlignment="center"
+        android:textSize="18sp"
         android:textColor="@android:color/darker_gray"/>
 
     <android.support.design.widget.FloatingActionButton
@@ -31,18 +34,4 @@
         android:layout_margin="16dp"
         android:src="@drawable/baseline_add_white_48" />
 
-    <Button
-        android:layout_alignParentTop="true"
-        android:id="@+id/editor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editor"
-        android:layout_marginRight="32dp"/>
-    <Button
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Details"/>
 </RelativeLayout>
